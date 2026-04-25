@@ -4,10 +4,10 @@ Lightweight Paper/ShreddedPaper plugin that allows players to dynamically change
 
 ### Features
 
--Changes player size with interactive GUI
--Moderation command to resize other players
--Fully configurable minimum, maximum, increment, and default sizes
--Persistent player sizes across sessions and respawn
+- Changes player size with interactive GUI
+- Moderation command to resize other players
+- Fully configurable minimum, maximum, increment, and default sizes
+- Persistent player sizes across sessions and respawn
 
 ### Installation
 
@@ -38,22 +38,22 @@ Saves player size to UUID. Should not be manually edited unless absolutely neces
 ## Commands
 ### Player Commands
 
-`/resize` | Open GUI
-`/resize help` | Show help menu
-`/resize info` | Show plugin info
+- `/resize`: Open GUI
+- `/resize help`: Show help menu
+- `/resize info`: Show plugin info
 ### Moderation Command
-`/resize [username] [size]` | Set player size
+- `/resize [username] [size]`: Set player size
 ### Admin Commands
-`/resize reload` | Reload plugin and config
-`/resise disable` | Disable plugin
-`/resize enable` | Enable plugin
+- `/resize reload`: Reload plugin and config
+- `/resise disable`: Disable plugin
+- `/resize enable`: Enable plugin
 
 ### Permissions
-`ogresize.self`: Allows use of GUI and changing own player size (default: operators)
-`ogresize.others`: Allows player to resize other players (default: operators)
-`ogresize.admin`: Allows use of reload / enable / disable (default: operators)
+- `ogresize.self`: Allows use of GUI and changing own player size (default: operators)
+- `ogresize.others`: Allows player to resize other players (default: operators)
+- `ogresize.admin`: Allows use of reload / enable / disable (default: operators)
 
-### GUI
+## GUI
 <picture of GUI>
 1x9 inventory grid
 
