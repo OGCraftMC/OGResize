@@ -1,0 +1,36 @@
+## OGResize created by OJCream
+## GitHub Documentation:
+## For questions and bug reports reach out to me on discord: https://discordapp.com/users/299317209488949259
+## Check out OGCraft.org to see the plugin in action!
+##
+
+
+## Set size maximum, minimum, increment, and default
+## Changes the minecraft:scale attribute
+settings:
+  min-size: 0.5     # Equal to 1 block tall
+  max-size: 1.5     # Equal to 3 blocks tall
+  step-size: 0.1    # Increment
+  default-size: 1   # Equal to 2 blocks tall
+
+## System Messages
+messages:
+  prefix: "&l&cOG&9Resize&f >> "
+  player-warning: "&cOnly works for players due to GUI component. Use /resize [username] [size]"
+  no-permission: "&4You don't have permission to use this feature!"
+  resized: "&fYou've changed your size to %size%!"
+  reset: "&fYou've returned to normal!"
+  bigger: "&fYou've made yourself bigger! (%size%)"
+  smaller: "&fYou've made yourself smaller! (%size%)"
+  max-size-limit: "&fYou're already as big as possible!"
+  min-size-limit: "&fYou're already as small as possible!"
+  size-confirmation: "&fSet %player% to %size%."
+  size-override: "&fYou have been set to size %size%."
+  player-not-found: "&4Player not found!"
+  plugin-enabled: "&cOGResize has been enabled!"
+  plugin-disabled: "&cOGResize has been disabled!"
+  plugin-reloaded: "&cOGResize has been reloaded!"
+  already-enabled: "&cOGResize is already enabled!"
+  already-disabled: "&cOGResize is already disabled!"
+  invalid-range: "&cSize must be between %min% and %max%"
+  unknown-command: "Argument not found. Use /resize help for guidance."

@@ -1,0 +1,22 @@
+name: OGResize
+version: 1.0
+main: org.ogcraft.ogresize.OGResize
+api-version: 1.21
+author: OJCream
+load: STARTUP
+
+commands:
+  resize:
+     description: need to change
+     usage: /resize | /resize [username] [size] | /resize help
+
+permissions:
+  ogresize.self:
+    description: Allows player to change their own size
+    default: op
+  ogresize.others:
+    description: Allows players to change other player's size
+    default: op
+  ogresize.admin:
+    description: Allows
+    default: op
