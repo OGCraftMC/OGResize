@@ -25,7 +25,7 @@ config.yml
   step-size: 0.1
   default-size: 1.0
 ```
-use `/resize reload` to apply config changes without restarting the server
+use `/resize reload` to apply config changes without restarting the server <br>
 each 0.5 increment = one block
   
 playersize.yml 
