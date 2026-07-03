@@ -172,7 +172,7 @@ public class ResizeCommand implements CommandExecutor{
             sender.sendMessage(color("&9/resize&f - Open GUI"));
             sender.sendMessage(color("&9/resize help&f - Displays this page"));
             sender.sendMessage(color("&9/resize info&f - Displays plugin information"));
-            sender.sendMessage(color("&9/resize [username] [size]&f - Manually change a player's size"));
+            sender.sendMessage(color("&9/resize [username] [size]&f - Manually change another player's size (&cModeration Only&f)"));
 
             return true;
         }
@@ -182,10 +182,10 @@ public class ResizeCommand implements CommandExecutor{
             String version = plugin.getPluginMeta().getVersion();
 
             sender.sendMessage(color("&d-------- &l&cOG&9Resize&r&f Information&d --------"));
-            sender.sendMessage(color("&fCreated by &dOJCream"));
-            sender.sendMessage(color("&fVersion: " + version));
-            sender.sendMessage(color("&fUsage: /resize | /resize [username] [size]"));
-            sender.sendMessage(color("&fDocumentation: https://github.com/OGCraftMC/OGScale"));
+            sender.sendMessage(color("&9Created by &dOJCream"));
+            sender.sendMessage(color("&9Version:&f " + version));
+            sender.sendMessage(color("&9Usage:&f /resize"));
+            sender.sendMessage(color("&9Documentation:&f https://github.com/OGCraftMC/OGResize"));
 
             return true;
         }

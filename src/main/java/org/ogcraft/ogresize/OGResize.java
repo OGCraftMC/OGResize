@@ -6,6 +6,7 @@ import org.ogcraft.ogresize.gui.ResizeListener;
 import org.ogcraft.ogresize.util.JoinListener;
 import org.ogcraft.ogresize.util.ResizePersistence;
 import org.ogcraft.ogresize.util.ScaleUtil;
+import org.bstats.bukkit.Metrics;
 
 public final class OGResize extends JavaPlugin {
 
@@ -39,6 +40,10 @@ public final class OGResize extends JavaPlugin {
 
         // Store plugin instance for global access
         instance = this;
+
+        // Register bstats
+        int pluginId = 32351;
+        new Metrics(this, pluginId);
 
         // Load default config.yml
         saveDefaultConfig();
