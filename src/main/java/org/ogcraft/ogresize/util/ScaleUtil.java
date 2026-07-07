@@ -36,6 +36,11 @@ public class ScaleUtil {
         return Registry.ATTRIBUTE.get(NamespacedKey.minecraft("scale"));
     }
 
+    // Resize Result
+    public record ResizeResult(boolean success, double oldSize, double newSize) {
+
+    }
+
     // Load and validate values from config.yml
     public static void loadConfig(OGResize plugin) {
         // Pull values from config.yml & includes defaults just in case
@@ -82,7 +87,7 @@ public class ScaleUtil {
     }
 
     // Main set method
-    public static void setScale(Player player, double size) {
+    public static boolean setScale(Player player, double size) {
 
         // Valid range
         size = Math.max(MIN, Math.min(MAX, size));
@@ -90,15 +95,20 @@ public class ScaleUtil {
         // Round to nearest increment
         size = Math.round(size / STEP) * STEP;
 
+        // Check if player has enough space for new size
+        if (!CollisionValidator.canResize(player, size)) {
+            return false;
+        }
+
         // Safe attribute get
         Attribute attribute = getScaleAttribute();
         if (attribute == null) {
-            return;
+            return false;
         }
 
         AttributeInstance instance = player.getAttribute(attribute);
         if (instance == null) {
-            return;
+            return false;
         }
 
         // Apply size
@@ -106,6 +116,8 @@ public class ScaleUtil {
 
         // Save size
         ResizePersistence.save(player.getUniqueId(), size);
+
+        return true;
     }
 
     // Get current scale
@@ -125,14 +137,14 @@ public class ScaleUtil {
     }
 
     // Increase scale
-    public static double increase(Player player) {
+    public static ResizeResult increase(Player player) {
 
         // Grab player's current size
         double current = getScale(player);
 
         // Handle at or above max size
         if (current >= MAX) {
-            return current;
+            return new ResizeResult(false, current, current);
         }
 
         // Calculate next size
@@ -143,20 +155,24 @@ public class ScaleUtil {
             newSize = MAX;
         }
 
-        // Apply new scale
-        setScale(player, newSize);
-        return newSize;
+        // Apply new scale if validation succeeds
+        if (setScale(player, newSize)) {
+            return new ResizeResult(true, current, newSize);
+        }
+
+        // Keep current size if validation fails
+        return new ResizeResult(false, current, current);
     }
 
     // Decrease scale
-    public static double decrease(Player player) {
+    public static ResizeResult decrease(Player player) {
 
         // Grab player's current scale
         double current = getScale(player);
 
         // Handle at or below minimum
         if (current <= MIN) {
-            return current;
+            return new ResizeResult(false, current, current);
         }
 
         // Calculate next size
@@ -167,14 +183,18 @@ public class ScaleUtil {
             newSize = MIN;
         }
 
-        // Apply new size
-        setScale(player, newSize);
-        return newSize;
+        // Apply new scale if validation succeeds
+        if (setScale(player, newSize)) {
+            return new ResizeResult(true, current, newSize);
+        }
+
+        // Keep current size if validation fails
+        return new ResizeResult(false, current, current);
     }
 
     // Reset scale
-    public static void reset(Player player) {
-        setScale(player, DEFAULT);
+    public static boolean reset(Player player) {
+        return setScale(player, DEFAULT);
     }
 
 

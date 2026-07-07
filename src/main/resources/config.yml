@@ -18,6 +18,7 @@ messages:
   prefix: "&l&cOG&9Resize&f >> "
   player-warning: "&cOnly works for players due to GUI component. Use /resize [username] [size]"
   no-permission: "&4You don't have permission to use this feature!"
+  no-room: "&4You do not have enough room to resize!"
   resized: "&fYou've changed your size to %size%!"
   reset: "&fYou've returned to normal!"
   bigger: "&fYou've made yourself bigger! (%size%)"
