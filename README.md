@@ -71,7 +71,8 @@ Right side/bigger option. Maximum reflects value set in config.
 <br>
 
 ### Requirements
-- Paper 1.21+ or ShreddedPaper 1.21.11+
+- Paper 26.1+ or ShreddedPaper 26.1+
+- Java 25
 
 ### Support
 Found a bug or have a suggestion?
