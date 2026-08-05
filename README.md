@@ -4,14 +4,14 @@ Lightweight Paper/ShreddedPaper plugin that allows players to dynamically change
 
 ### Features
 
-- Changes player size with interactive GUI
+- Change player size with interactive GUI
 - Moderation command to resize other players
 - Fully configurable minimum, maximum, increment, and default sizes
 - Persistent player sizes across sessions and respawn
 
 ### Installation
 
-1. Download the latest `.jar` from Github
+1. Download the latest `.jar`
 2. Place it in your server's `/plugins/` folder
 3. Configure `config.yml` if needed
 4. Start your server
@@ -42,7 +42,7 @@ Saves player size to UUID. Should not be manually edited unless absolutely neces
 - `/resize help`: Show help menu
 - `/resize info`: Show plugin info
 ### Moderation Command
-- `/resize [username] [size]`: Set player size
+- `/resize [username] [size]`: Manually set any player's size
 ### Admin Commands
 - `/resize reload`: Reload plugin and config
 - `/resise disable`: Disable plugin
