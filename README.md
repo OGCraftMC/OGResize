@@ -54,20 +54,28 @@ Saves player size to UUID. Should not be manually edited unless absolutely neces
 - `ogresize.admin`: Allows use of reload / enable / disable (default: operators)
 
 ## GUI
-<img width="693" height="515" alt="image" src="https://github.com/user-attachments/assets/541932e1-afd6-4eb0-a681-8999c7bbf33b" /> <br>
+<img width="702" height="523" alt="image" src="https://github.com/user-attachments/assets/8c1f1c7b-ba3d-4b74-ac5b-c9158ad92a4b" /> <br>
 Full GUI
 <br>
 <br>
-<img width="718" height="115" alt="image" src="https://github.com/user-attachments/assets/9a403493-bd6d-4c1c-aa54-79a3ea9d3b25" /> <br>
-Left side/smaller option. Minimum reflects value set in config. 
+<img width="950" height="117" alt="image" src="https://github.com/user-attachments/assets/03a41e3d-4483-442e-87a4-dba72583baf6" /> <br>
+Instantly set player to minimum size. Minimum reflects value set in config.
 <br>
 <br>
-<img width="310" height="113" alt="image" src="https://github.com/user-attachments/assets/be0d51cb-2989-4202-94f8-1049a86b7f3e" /> <br>
-Middle/default option. Default reflects value set in config. 
+<img width="692" height="113" alt="image" src="https://github.com/user-attachments/assets/9bcfdc96-c219-4009-9a47-011f601b75a6" /> <br>
+Increment player size smaller. Increment reflects step size value in config. 
 <br>
 <br>
-<img width="736" height="114" alt="image" src="https://github.com/user-attachments/assets/46371342-933e-4361-834c-f70cc6195a1f" /> <br>
-Right side/bigger option. Maximum reflects value set in config.
+<img width="344" height="117" alt="image" src="https://github.com/user-attachments/assets/b6a4843b-75ed-46f2-8813-177271e6f281" /> <br>
+Return player size to default. Default reflects value set in config. 
+<br>
+<br>
+<img width="668" height="116" alt="image" src="https://github.com/user-attachments/assets/209456eb-d77a-4c3e-9efc-8b63af526006" /> <br>
+Increment player size bigger. Increment reflects step-size value in config.
+<br>
+<br>
+<img width="950" height="118" alt="image" src="https://github.com/user-attachments/assets/5bebc46f-fe4a-4952-a938-9e02eca80b24" /> <br>
+Instantly set player to maximum size. Maximum reflects value set in config.
 <br>
 
 ### Requirements
