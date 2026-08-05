@@ -14,6 +14,7 @@ import org.bstats.bukkit.Metrics;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public final class OGResize extends JavaPlugin {
 
@@ -118,15 +119,17 @@ public final class OGResize extends JavaPlugin {
             return;
         }
 
-        // Load default Config
-        YamlConfiguration defaults = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
+        // Load default Config using UTF-8
+        YamlConfiguration defaults = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream, StandardCharsets.UTF_8));
         boolean changed = false;
 
         // Check every value for a change
         for (String key : defaults.getKeys(true)) {
 
+            // Only add missing values
             if (!current.contains(key)) {
                 current.set(key, defaults.get(key));
+                getLogger().info("Added missing config: " + key);
                 changed = true;
             }
         }
@@ -140,10 +143,12 @@ public final class OGResize extends JavaPlugin {
 
     // Message Helpers
 
+    // Get a value from config
     public String get(String path) {
         return OGResize.getInstance().getConfig().getString(path, "");
     }
 
+    // Get a formatted message with plugin prefix and color codes
     public String msg(String path) {
         String prefix = get("messages.prefix");
         String message = get(path);
@@ -151,14 +156,17 @@ public final class OGResize extends JavaPlugin {
         return color(prefix + message);
     }
 
+    // Convert legacy format to adventure component
     public Component msgComponent(String path) {
         return LegacyComponentSerializer.legacySection().deserialize(msg(path));
     }
 
+    // Convery legacy &color codes into minecraft section color codes
     public String color(String msg) {
         return msg.replace("&", "§");
     }
 
+    // Format decimals
     public String format(double value) {
         return String.format("%.1f", value);
     }

@@ -25,9 +25,7 @@ public class ResizeCommand implements CommandExecutor{
             return true;
         }
 
-        // ------------
         // Main Command
-        // ------------
 
         // Player use: /resize
         // Opens GUI
@@ -93,14 +91,12 @@ public class ResizeCommand implements CommandExecutor{
             return true;
         }
 
-        // __________________________
         // Plugin Management Commands
-        // __________________________
 
         // Reload Plugin Config
         if (args[0].equalsIgnoreCase("reload")) {
 
-            // Permissions check
+            // Permission check
             if (!sender.hasPermission("ogresize.admin")) {
                 sender.sendMessage(OGResize.getInstance().msg("messages.no-permission"));
                 return true;
@@ -116,7 +112,7 @@ public class ResizeCommand implements CommandExecutor{
         // Enable Plugin
         if (args[0].equalsIgnoreCase("enable")) {
 
-            // Permissions check
+            // Permission check
             if (!sender.hasPermission("ogresize.admin")) {
                 sender.sendMessage(OGResize.getInstance().msg("messages.no-permission"));
                 return true;
@@ -140,7 +136,7 @@ public class ResizeCommand implements CommandExecutor{
         // Disable Plugin
         if (args[0].equalsIgnoreCase("disable")) {
 
-            // Permissions check
+            // Permission check
             if (!sender.hasPermission("ogresize.admin")) {
                 sender.sendMessage(OGResize.getInstance().msg("messages.no-permission"));
                 return true;
@@ -181,7 +177,10 @@ public class ResizeCommand implements CommandExecutor{
         if (args[0].equalsIgnoreCase("info")) {
             String version = plugin.getPluginMeta().getVersion();
 
+            // Header
             sender.sendMessage(OGResize.getInstance().color("&d-------- &l&cOG&9Resize&r&f Information&d --------"));
+
+            // Body
             sender.sendMessage(OGResize.getInstance().color("&9Created by &dOJCream"));
             sender.sendMessage(OGResize.getInstance().color("&9Version:&f " + version));
             sender.sendMessage(OGResize.getInstance().color("&9Usage:&f /resize"));

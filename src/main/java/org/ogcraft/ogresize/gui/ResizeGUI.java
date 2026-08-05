@@ -21,20 +21,34 @@ public class ResizeGUI {
         // Create inventory GUI
         Inventory gui = Bukkit.createInventory(null, 9, TITLE);
 
-        // LEFT
-        // Smaller Option ; Cherry Wood Button
-        ItemStack smaller = new ItemStack(Material.CHERRY_BUTTON);
+        // Instant to minimum (Small)
+        // Left most button
+        ItemStack instasmall = new ItemStack(Material.CHERRY_BUTTON);
+        ItemMeta ism = instasmall.getItemMeta();
+
+        ism.displayName(Component.text("Smallest").color(NamedTextColor.BLUE));
+        ism.lore(List.of(Component.text("Click to decrease size to minimum (min " + ScaleUtil.getMin() + ")").color(NamedTextColor.GRAY)));
+        instasmall.setItemMeta(ism);
+
+        // Slot 1,1 ; index 0
+        gui.setItem(0, instasmall);
+
+
+        // Small Increment
+        // 2nd Left Button
+        ItemStack smaller = new ItemStack(Material.CHERRY_SLAB);
         ItemMeta sm = smaller.getItemMeta();
 
         sm.displayName(Component.text("Smaller").color(NamedTextColor.BLUE));
-        sm.lore(List.of(Component.text("Click to decrease size (min " + ScaleUtil.getMin() + ")").color(NamedTextColor.GRAY)));
+        sm.lore(List.of(Component.text("Click to decrease size by " + ScaleUtil.getSTEP()).color(NamedTextColor.GRAY)));
         smaller.setItemMeta(sm);
 
         // Slot 1,3 ; index 2
         gui.setItem(2, smaller);
 
-        // MIDDLE
-        // Reset to Default ; Default = 1.0 = 2 blocks tall ; Armor Stand
+
+        // Reset to Default
+        // Middle Button
         ItemStack reset = new ItemStack(Material.ARMOR_STAND);
         ItemMeta rm = reset.getItemMeta();
 
@@ -45,17 +59,32 @@ public class ResizeGUI {
         // Slot 1,5 ; index 4
         gui.setItem(4, reset);
 
-        // RIGHT
-        // Bigger Option ; Cherry Wood Plank
-        ItemStack bigger = new ItemStack(Material.CHERRY_PLANKS);
+
+        // Large Increment
+        // 2nd Right Button
+        ItemStack bigger = new ItemStack(Material.CHERRY_STAIRS);
         ItemMeta bi = bigger.getItemMeta();
 
         bi.displayName(Component.text("Bigger").color(NamedTextColor.BLUE));
-        bi.lore(List.of(Component.text("Click to increase size (max " + ScaleUtil.getMax() + ")").color(NamedTextColor.GRAY)));
+        bi.lore(List.of(Component.text("Click to increase size by " + ScaleUtil.getSTEP()).color(NamedTextColor.GRAY)));
         bigger.setItemMeta(bi);
 
         // Slot 1,7 ; index 6
         gui.setItem(6, bigger);
+
+
+        // Instant to maximum (large)
+        // Rightmost Button
+        ItemStack instabig = new ItemStack(Material.CHERRY_PLANKS);
+        ItemMeta ibi = instabig.getItemMeta();
+
+        ibi.displayName(Component.text("Biggest").color(NamedTextColor.BLUE));
+        ibi.lore(List.of(Component.text("Click to increase size to maximum (max " + ScaleUtil.getMax() + ")").color(NamedTextColor.GRAY)));
+        instabig.setItemMeta(ibi);
+
+        // Slot 1,9 ; index 8
+        gui.setItem(8, instabig);
+
 
         // Opens GUI
         player.openInventory(gui);

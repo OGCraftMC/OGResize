@@ -18,15 +18,12 @@ public class ScaleUtil {
     public static double getMin() {
         return MIN;
     }
-
-    public static  double getMax() {
+    public static double getMax() {
         return MAX;
     }
-
     public static double getSTEP() {
         return STEP;
     }
-
     public static double getDefault() {
         return DEFAULT;
     }
@@ -37,9 +34,7 @@ public class ScaleUtil {
     }
 
     // Resize Result
-    public record ResizeResult(boolean success, double oldSize, double newSize) {
-
-    }
+    public record ResizeResult(boolean success, double oldSize, double newSize) { }
 
     // Load and validate values from config.yml
     public static void loadConfig(OGResize plugin) {
@@ -67,7 +62,6 @@ public class ScaleUtil {
         MAX = max;
         STEP = step;
         DEFAULT = def;
-
     }
 
     //
@@ -86,7 +80,7 @@ public class ScaleUtil {
         return size;
     }
 
-    // Main set method
+    // Increment main set method
     public static boolean setScale(Player player, double size) {
 
         // Valid range
@@ -197,5 +191,22 @@ public class ScaleUtil {
         return setScale(player, DEFAULT);
     }
 
+    // Set exact scale (instant min/max)
+    public static ResizeResult setExactScale(Player player, double scale) {
+
+        // Grab player's current scale
+        double current = getScale(player);
+
+        // Normalize requested size
+        double newSize = normalize(scale);
+
+        // Apply if validation succeeds
+        if (setScale(player, newSize)) {
+            return new ResizeResult(true, current, newSize);
+        }
+
+        // Keep current size if validation fails
+        return new ResizeResult(false, current, current);
+    }
 
 }

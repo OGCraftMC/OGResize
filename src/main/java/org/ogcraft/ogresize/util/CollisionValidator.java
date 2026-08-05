@@ -9,9 +9,7 @@ import org.bukkit.entity.Player;
 public final class CollisionValidator {
 
     // Utility class
-    private CollisionValidator() {
-
-    }
+    private CollisionValidator() {}
 
     // Check if resize safe
     public static boolean canResize(Player player, double newScale) {

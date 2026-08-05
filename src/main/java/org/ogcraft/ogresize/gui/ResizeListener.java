@@ -65,6 +65,32 @@ public class ResizeListener implements Listener {
         // Handle click actions
         switch (name) {
 
+            // Instant Minimum
+            case "Smallest" -> {
+
+                // Grab current size
+                double current = ScaleUtil.getScale(player);
+
+                // Prevent player exceeding minimum size & let them know
+                if (current <= ScaleUtil.getMin()) {
+                    player.sendMessage(OGResize.getInstance().msg("messages.min-size-limit"));
+                    return;
+                }
+
+                // Set size to minimum safely
+                ScaleUtil.ResizeResult result = ScaleUtil.setExactScale(player, ScaleUtil.getMin());
+
+                // Kill resize if validation fails
+                if (!result.success()) {
+                    player.sendMessage(OGResize.getInstance().msg("messages.no-room"));
+                    return;
+                }
+
+                // Display to player
+                player.sendMessage(OGResize.getInstance().msgComponent("messages.smaller").replaceText(builder -> builder.matchLiteral("%size%").replacement(OGResize.getInstance().format(result.newSize()))));
+
+            }
+
             // Smaller option
             case "Smaller" -> {
 
@@ -92,7 +118,15 @@ public class ResizeListener implements Listener {
 
             // Reset button
             case "Default" -> {
-                ScaleUtil.reset(player);
+
+                // Reset size safely
+                boolean result = ScaleUtil.reset(player);
+
+                // Kill reset if validation fails
+                if (!result) {
+                    player.sendMessage(OGResize.getInstance().msg("messages.no-room"));
+                    return;
+                }
 
                 // Display to player
                 player.sendMessage(OGResize.getInstance().msg("messages.reset"));
@@ -104,13 +138,13 @@ public class ResizeListener implements Listener {
                 // Grab current size
                 double current = ScaleUtil.getScale(player);
 
-                // Prevent player exceeding maximum size & let them know
+                // Prevent player from exceeding maximum size & let them know
                 if (current >= ScaleUtil.getMax()) {
                     player.sendMessage(OGResize.getInstance().msg("messages.max-size-limit"));
                     return;
                 }
 
-                // Decrease size safely
+                // Increase size safely
                 ScaleUtil.ResizeResult result = ScaleUtil.increase(player);
 
                 // Kill resize if validation fails
@@ -122,6 +156,32 @@ public class ResizeListener implements Listener {
                 // Display to player
                 player.sendMessage(OGResize.getInstance().msgComponent("messages.bigger").replaceText(builder -> builder.matchLiteral("%size%").replacement(OGResize.getInstance().format(result.newSize()))));
             }
+
+            case "Biggest" -> {
+
+                // Grab current size
+                double current = ScaleUtil.getScale(player);
+
+                // Prevent player from exceeding maximum size & let them know
+                if (current >= ScaleUtil.getMax()) {
+                    player.sendMessage(OGResize.getInstance().msg("messages.max-size-limit"));
+                    return;
+                }
+
+                // Set size to maximum safely
+                ScaleUtil.ResizeResult result = ScaleUtil.setExactScale(player, ScaleUtil.getMax());
+
+                // Kill resize if validation fails
+                if (!result.success()) {
+                    player.sendMessage(OGResize.getInstance().msg("messages.no-room"));
+                    return;
+                }
+
+                // Display to player
+                player.sendMessage(OGResize.getInstance().msgComponent("messages.bigger").replaceText(builder -> builder.matchLiteral("%size%").replacement(OGResize.getInstance().format(result.newSize()))));
+
+            }
+
         }
     }
 }
