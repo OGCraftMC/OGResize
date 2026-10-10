@@ -84,6 +84,14 @@ public class ResizeCommand implements CommandExecutor{
             // Grabs value to prevent floating point error
             double applied = ScaleUtil.getScale(target);
 
+            // Check if player has room to resize
+            if (!ScaleUtil.setScale(target, safeSize)) {
+                sender.sendMessage(OGResize.getInstance().msg("messages.no-room"));
+                target.sendMessage(OGResize.getInstance().msg("messages.no-room-target"));
+
+                return true;
+            }
+
             // Display confirmation
             sender.sendMessage(OGResize.getInstance().msg("messages.size-confirmation").replace("%player%", target.getName()).replace("%size%", OGResize.getInstance().format(applied)));
             target.sendMessage(OGResize.getInstance().msg("messages.size-override").replace("%size%", OGResize.getInstance().format(applied)));
